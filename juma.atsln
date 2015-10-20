@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "juma", "juma\juma.cppproj", "{524CD728-F2B5-43AA-808A-E4F316FA626F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{524CD728-F2B5-43AA-808A-E4F316FA626F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{524CD728-F2B5-43AA-808A-E4F316FA626F}.Debug|AVR.Build.0 = Debug|AVR
+		{524CD728-F2B5-43AA-808A-E4F316FA626F}.Release|AVR.ActiveCfg = Release|AVR
+		{524CD728-F2B5-43AA-808A-E4F316FA626F}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
