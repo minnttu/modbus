@@ -105,12 +105,10 @@ typedef long    LONG;
 #elif defined (__AVR_ATmega128__)
 #define UCSRB           UCSR0B
 #define UBRR            UBRR0L
-#define UDR             UDR0
+#define UDR             UDR0 //usart set to zero, not one
 #define TIMSK1          TIMSK
 #define TIFR1           TIFR
-#define SIG_UART_TRANS  UART_TX_vect
-#define SIG_USART_DATA  USART_UDRE_vect
-#define SIG_USART_RECV  USART_RXC_vect
+q
 #define UCSZ0           UCSZ00
 #define UCSZ1           UCSZ01
 #define UPM0            UPM00

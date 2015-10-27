@@ -1,4 +1,15 @@
 /*
+ * freemodbus.c
+ *
+ * Created: 22.9.2015 13:10:52
+ *  Author: e1201352 
+ *
+ *	Receiving new distance from raspberry
+ *	Sending new distance to kit
+ *
+ */
+
+/*
  * FreeModbus Libary: AVR Demo Application
  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
  *
@@ -17,12 +28,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * File: $Id: demo.c,v 1.7 2006/06/15 15:38:02 wolti Exp $
- 
- 
-
-Change data, connect with Modscan
-
-
  */
 
 /* ----------------------- AVR includes -------------------------------------*/
@@ -48,9 +53,10 @@ main( void )
     const UCHAR     ucSlaveID[] = { 0x01 };
     eMBErrorCode    eStatus;
 
-    eStatus = eMBInit( MB_RTU, 0x01, 0, 38400, MB_PAR_EVEN );
-
-    eStatus = eMBSetSlaveID(ucSlaveID[0], TRUE, ucSlaveID, 3 ); 
+    //function 3 read holding registers
+	eStatus = eMBInit( MB_RTU, address, 3, data, MB_PAR_EVEN );//query 
+		//read response
+    eStatus = eMBSetSlaveID( 0x34, TRUE, ucSlaveID, 3 );
     sei(  );
 
     /* Enable the Modbus Protocol Stack. */
@@ -58,6 +64,11 @@ main( void )
 
     for( ;; )
     {
+		
+		
+
+		
+		
         ( void )eMBPoll(  );
 
         /* Here we simply count the number of poll cycles. */
