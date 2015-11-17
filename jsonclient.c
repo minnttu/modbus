@@ -1,4 +1,9 @@
-/*To compile it, run:
+/*
+17.11.2015
+Minttu Hämäläinen
+e1201352
+
+To compile it, run:
 
 $ gcc -o jsonclient jsonclient.c
 $ ./jsonclient 
@@ -18,6 +23,8 @@ $ ./htmlget coding.debuntu.org category > /tmp/page.html
     #include <stdlib.h>
     #include <netdb.h>
     #include <string.h>
+	#include "json.h"
+	
     int create_tcp_socket();				
     char *get_ip(char *host);
     char *build_get_query(char *host, char *page);
@@ -30,6 +37,7 @@ $ ./htmlget coding.debuntu.org category > /tmp/page.html
      
     int main(int argc, char **argv)
     {
+	 // for json {contenttype : application/javascript}
       struct sockaddr_in *remote;
       int sock;
       int tmpres;
@@ -71,8 +79,9 @@ $ ./htmlget coding.debuntu.org category > /tmp/page.html
         exit(1);
       }
       get = build_get_query(host, page);
-      fprintf(stderr, "Query is:\n<<START>>\n%s<<END>>\n", get);
+      fprintf(stderr, "Query is:\n<<START>>\n%s<<END>>\n", get); // writing into stderr "Query is host, page from build get query(..)
      
+	 
       //Send the query to the server
       int sent = 0;
       while(sent < strlen(get))
@@ -142,7 +151,7 @@ $ ./htmlget coding.debuntu.org category > /tmp/page.html
     char *get_ip(char *host)
     {
       struct hostent *hent;
-      int iplen = 15; //XXX.XXX.XXX.XXX
+      int iplen = 15; 																			//XXX.XXX.XXX.XXX
       char *ip = (char *)malloc(iplen+1);
       memset(ip, 0, iplen+1);
       if((hent = gethostbyname(host)) == NULL)
@@ -162,7 +171,7 @@ $ ./htmlget coding.debuntu.org category > /tmp/page.html
     {
       char *query;
       char *getpage = page;
-      char *tpl = "GET /%s HTTP/1.0\r\nHost: %s\r\nUser-Agent: %s\r\n\r\n";
+      char *tpl = "GET /%s HTTP/1.0\r\nHost: %s\r\nUser-Agent: %s\r\n\r\n"; 
       if(getpage[0] == '/'){
         getpage = getpage + 1;
         fprintf(stderr,"Removing leading \"/\", converting %s to %s\n", page, getpage);
