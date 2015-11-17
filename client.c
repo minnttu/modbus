@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /*		./client localhost portnumber (>1000		*/
+=======
+/*		./client localhost portnumber		*/
+>>>>>>> 4f42ab7... Merge branch 'master' of https://github.com/minnttu/modbus
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,11 +51,19 @@ int main(int argc, char *argv[])
     printf("Please enter the message: ");
     bzero(buffer,256);
     fgets(buffer,255,stdin);
+<<<<<<< HEAD
     n = send(sockfd,buffer,strlen(buffer),0); //write muokattu flags
     if (n < 0) 
          error("ERROR writing to socket");
     bzero(buffer,256);
     n = recv(sockfd,buffer,255,0); //read muokattu flags
+=======
+    n = write(sockfd,buffer,strlen(buffer)); //send
+    if (n < 0) 
+         error("ERROR writing to socket");
+    bzero(buffer,256);
+    n = read(sockfd,buffer,255); //recv
+>>>>>>> 4f42ab7... Merge branch 'master' of https://github.com/minnttu/modbus
     if (n < 0) 
          error("ERROR reading from socket");
     printf("%s\n",buffer);

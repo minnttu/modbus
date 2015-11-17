@@ -47,10 +47,17 @@ int main(int argc, char *argv[])
      if (newsockfd < 0) 
           error("ERROR on accept");
      bzero(buffer,256);
+<<<<<<< HEAD
      n = recv(newsockfd,buffer,255,0); //recv
      if (n < 0) error("ERROR reading from socket");
      printf("Here is the message: %s\n",buffer);
      n = send(newsockfd,"I got your message",18,0); //send
+=======
+     n = read(newsockfd,buffer,255); //recv
+     if (n < 0) error("ERROR reading from socket");
+     printf("Here is the message: %s\n",buffer);
+     n = write(newsockfd,"I got your message",18); //send
+>>>>>>> 4f42ab7... Merge branch 'master' of https://github.com/minnttu/modbus
      if (n < 0) error("ERROR writing to socket");
      close(newsockfd);
      close(sockfd);
