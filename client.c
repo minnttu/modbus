@@ -1,4 +1,4 @@
-/*		./client localhost portnumber		*/
+/*		./client localhost portnumber (>1000		*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,11 +47,11 @@ int main(int argc, char *argv[])
     printf("Please enter the message: ");
     bzero(buffer,256);
     fgets(buffer,255,stdin);
-    n = write(sockfd,buffer,strlen(buffer)); //send
+    n = send(sockfd,buffer,strlen(buffer),0); //write muokattu flags
     if (n < 0) 
          error("ERROR writing to socket");
     bzero(buffer,256);
-    n = read(sockfd,buffer,255); //recv
+    n = recv(sockfd,buffer,255,0); //read muokattu flags
     if (n < 0) 
          error("ERROR reading from socket");
     printf("%s\n",buffer);
